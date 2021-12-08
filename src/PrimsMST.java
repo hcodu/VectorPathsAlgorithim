@@ -78,9 +78,9 @@ import java.io.*;
                 }
             }
 
-            //Prints the constructed MST
 
             endTime = System.nanoTime();
+            //Prints the Prims MST
 
             printMST();
         }
