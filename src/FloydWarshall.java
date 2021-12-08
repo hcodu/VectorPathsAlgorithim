@@ -7,7 +7,7 @@ import java.io.*;
         final int infinity = 99999;
         int vertices;
         int original[][];
-        long startTime, endTime;
+        double startTime, endTime;
 
 
         public FloydWarshall(int inputGraph[][], int vs) {
@@ -68,7 +68,8 @@ import java.io.*;
             System.out.println();
 
 
-            //System.out.println("This completes in " + timeComplextity() + " ms");
+            System.out.println("This ran in " + timeComplextity() + " milliseconds");
+            System.out.println();
         }
 
         public void printOriginal(int[][] original) {
@@ -87,9 +88,8 @@ import java.io.*;
             System.out.println();
         }
 
-        public long timeComplextity() {
-            System.out.println("Start: " + startTime + "  End:" + endTime + " " + " complexity: " + ((endTime - startTime) / 1000000));
-            return (endTime - startTime);
+        public double timeComplextity() {
+            return (endTime - startTime) / 1000000;
 
         }
 

@@ -8,6 +8,7 @@ import java.io.*;
         private int[] parent, soltion;
         private int[][] inputGraph;
         int infinity = 99999;
+        public double startTime, endTime;
 
         public PrimsMST(int input[][], int vs) {
             vertices = vs;
@@ -39,10 +40,16 @@ import java.io.*;
             System.out.println("Edge    Weight");
             for (int i = 1; i < vertices; i++)
                 System.out.println(parent[i] + " - " + i + "    " + inputGraph[i][parent[i]]);
+
+            System.out.println("This ran in " + timeComplexity(startTime, endTime) + " milliseconds");
+            System.out.println();
+
         }
 
         // Function to construct the MST from the inputGraph[][], then calls the printMST() method to demonstrate
         public void primMST() {
+            startTime = System.nanoTime();
+
             // Initialize of the solutions are as infinity
             for (int i = 0; i < vertices; i++) {
                 soltion[i] = infinity;
@@ -72,7 +79,14 @@ import java.io.*;
             }
 
             //Prints the constructed MST
+
+            endTime = System.nanoTime();
+
             printMST();
+        }
+
+        public double timeComplexity(double start, double end) {
+            return (double)((end - start) / 1000000);
         }
 
 
