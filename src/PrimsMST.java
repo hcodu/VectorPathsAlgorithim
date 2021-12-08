@@ -3,15 +3,11 @@ import java.lang.*;
 import java.io.*;
 
     public class PrimsMST {
-        // Number of vertices in the graph
         private static int vertices;
         private Boolean[] arrMST;
         private int[] parent, soltion;
         private int[][] inputGraph;
-        int min = 99999;
-
-        // A utility function to find the vertex with minimum key
-        // value, from the set of vertices not yet included in MST
+        int infinity = 99999;
 
         public PrimsMST(int input[][], int vs) {
             vertices = vs;
@@ -19,82 +15,63 @@ import java.io.*;
             parent = new int[vertices];
             soltion = new int[vertices];
             arrMST = new Boolean[vertices];
-
             inputGraph = input;
-
-
         }
 
+        int shortestVector(int soltion[], Boolean arrMST[]) {
+            // Initialize infinity value
+            int infinity = 99999;
 
-        int minKey(int key[], Boolean arrMST[]) {
-            // Initialize min value
-            int min = 99999;
-
-            int min_index = -1;
+            //Find the index of the shortest vertex stemming from the current vertex that has not yet been visited by the MST algorithm
+            int shortestIndex = -1;
             for (int v = 0; v < vertices; v++) {
-                if (arrMST[v] == false && soltion[v] < min) {
-                    min = key[v];
-                    min_index = v;
+                if (arrMST[v] == false && soltion[v] < infinity) {
+                    infinity = soltion[v];
+                    shortestIndex = v;
                 }
             }
-
-            return min_index;
+            return shortestIndex;
         }
 
-        // A utility function to print the constructed MST stored in
-        // parent[]
+        // A function to print the constructed MST from the primMST() method
         public void printMST() {
             System.out.println("The following code applies Prim's MST for a graph with " + vertices  + " vertices.");
-            System.out.println("Edge \t Weight");
+            System.out.println("Edge    Weight");
             for (int i = 1; i < vertices; i++)
-                System.out.println(parent[i] + " - " + i + " \t " + inputGraph[i][parent[i]]);
+                System.out.println(parent[i] + " - " + i + "    " + inputGraph[i][parent[i]]);
         }
 
-        // Function to construct and print MST for a graph represented
-        // using adjacency matrix representation
+        // Function to construct the MST from the inputGraph[][], then calls the printMST() method to demonstrate
         public void primMST() {
-            // Array to store constructed MST
-
-            // Key values used to pick minimum weight edge in cut
-
-
-            // To represent set of vertices included in MST
-
-            // Initialize all keys as INFINITE
+            // Initialize of the solutions are as infinity
             for (int i = 0; i < vertices; i++) {
-                soltion[i] = min;
+                soltion[i] = infinity;
                 arrMST[i] = false;
             }
 
-            // Always include first 1st vertex in MST.
-            soltion[0] = 0; // Make key 0 so that this vertex is
-            // picked as first vertex
-            parent[0] = -1; // First node is always root of MST
+            // Start MST with the first vertex by setting the first vertex of the solution equal to 0.
+            soltion[0] = 0;
+            parent[0] = -1; // Sets first vertex is always beggining of MST
 
-            // The MST will have V vertices
-            for (int count = 0; count < (vertices - 1); count++) {
-                // Pick thd minimum key vertex from the set of vertices
-                // not yet included in MST
-                int u = minKey(soltion, arrMST);
+            // The MST will have "vertices" number of vertices
+            for (int c = 0; c < (vertices - 1); c++) {
+                // Pick the shortest vector from the current vertex to the set of vertices not yet visited by the MST algorithm
+                int shortestVector = shortestVector(soltion, arrMST);
 
-                // Add the picked vertex to the MST Set
-                arrMST[u] = true;
+                // Add the picked (current shortest) vertex to the MST array
+                arrMST[shortestVector] = true;
 
-                // Update key value and parent index of the adjacent
-                // vertices of the picked vertex. Consider only those
-                // vertices which are not yet included in MST
-                for (int v = 0; v < vertices; v++)
-
-                    // graph[u][v] is non zero only for adjacent vertices of m
-                    // mstSet[v] is false for vertices not yet included in MST
-                    // Update the key only if graph[u][v] is smaller than key[v]
-                    if (inputGraph[u][v] != 0 && arrMST[v] == false && inputGraph[u][v] < soltion[v]) {
-                        parent[v] = u;
-                        soltion[v] = inputGraph[u][v];
+                // Updates solution value and parent index of the adjacent vertices of the picked vertex (but only the vertices which have not yet been visited by MST algorithm)
+                for (int v = 0; v < vertices; v++) {
+                    // mstSet[v] is false for vertices not yet visited by the MST algorithm. Updates the solutions only if inputGraph[u][v] is smaller than solution[v] (and vertex hasn't been added to the MST)
+                    if (inputGraph[shortestVector][v] != 0 && arrMST[v] == false && inputGraph[shortestVector][v] < soltion[v]) {
+                        parent[v] = shortestVector;
+                        soltion[v] = inputGraph[shortestVector][v];
                     }
+                }
             }
 
-            // print the constructed MST
+            //Prints the constructed MST
             printMST();
         }
 
