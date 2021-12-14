@@ -6,69 +6,164 @@ public class AlgorithimTester {
 
         final int infinity = 99999;
 
-        int fourVFloydGraph[][] = {{0,       5,        infinity, 10      },
-                                   {infinity, 0,        3,        infinity},
-                                   {infinity, infinity, 0,        1       },
-                                   {infinity, infinity, infinity, 0       }};
+        int[][] tenVGraph = new int[10][10];
+        for(int row = 0; row < 10; row++) {
+            for(int col = 0; col < 10; col++) {
+                if(row != col) {
+                    int rand = (int) (Math.random() * 10) + 1;
+                    if(rand <= 7) {
+                        tenVGraph[row][col] = rand;
+                    }
+                    else {
+                        tenVGraph[row][col] = 99999;
+                    }
+                }
+                //System.out.print(tenVGraph[row][col] + "\t");
 
-        FloydWarshall floydWarhsall4 = new FloydWarshall(fourVFloydGraph, 4);
-        floydWarhsall4.floydWarshall();
+            }
+        }
 
-        int fiveVFloydGraph[][] = {{0,       2,        1 ,       infinity, infinity},
-                                   {infinity, 0,        infinity, 3,        5       },
-                                   {infinity, infinity, 0,        5,        infinity},
-                                   {infinity, infinity, infinity, 0,        infinity},
-                                   {infinity, infinity, infinity, infinity, 0}      };
+        int[][] fiftyVGraph = new int[50][50];
+        for(int row = 0; row < 50; row++) {
+            for(int col = 0; col < 50; col++) {
+                if(row != col) {
+                    int rand = (int) (Math.random() * 10) + 1;
+                    if(rand <= 7) {
+                        fiftyVGraph[row][col] = rand;
+                    }
+                    else {
+                        fiftyVGraph[row][col] = 99999;
+                    }
+                }
+               // System.out.print(fiftyVGraph[row][col] + "\t");
 
-        FloydWarshall floydWarshall5 = new FloydWarshall(fiveVFloydGraph, 5);
-        floydWarshall5.floydWarshall();
+            }
 
-        int sixVFloydGraph[][] = {{0,       2 ,       1 ,       infinity, infinity, infinity},
-                                  {infinity, 0,        infinity, 4,        3,        2       },
-                                  {infinity, infinity, 0,        3,        infinity, infinity},
-                                  {infinity, infinity, infinity, 0,        5,        infinity},
-                                  {infinity, infinity, infinity, infinity, 0,        infinity},
-                                  {infinity, infinity, infinity, infinity, 1,        0}};
+        }
 
-        FloydWarshall floydWarhsall6 = new FloydWarshall(sixVFloydGraph, 6);
-        floydWarhsall6.floydWarshall();
+        int[][] oneHundredVGraph = new int[100][100];
+        for(int row = 0; row < 100; row++) {
+            for(int col = 0; col < 100; col++) {
+                if(row != col) {
+                    int rand = (int) (Math.random() * 10) + 1;
+                    if(rand <= 7) {
+                        oneHundredVGraph[row][col] = rand;
+                    }
+                    else {
+                        oneHundredVGraph[row][col] = 99999;
+                    }
+                }
+                // System.out.print(fiftyVGraph[row][col] + "\t");
+
+            }
+
+        }
+
+
+//        int fourVFloydGraph[][] = {{0,       5,        infinity, 10      },
+//                                   {infinity, 0,        3,        infinity},
+//                                   {infinity, infinity, 0,        1       },
+//                                   {infinity, infinity, infinity, 0       }};
+//
+//        FloydWarshall floydWarhsall4 = new FloydWarshall(fourVFloydGraph, 4);
+//        floydWarhsall4.floydWarshall();
+//
+//        int fiveVFloydGraph[][] = {{0,       2,        1 ,       infinity, infinity},
+//                                   {infinity, 0,        infinity, 3,        5       },
+//                                   {infinity, infinity, 0,        5,        infinity},
+//                                   {infinity, infinity, infinity, 0,        infinity},
+//                                   {infinity, infinity, infinity, infinity, 0}      };
+//
+//        FloydWarshall floydWarshall5 = new FloydWarshall(fiveVFloydGraph, 5);
+//        floydWarshall5.floydWarshall();
+//
+//        int sixVFloydGraph[][] = {{0,       2 ,       1 ,       infinity, infinity, infinity},
+//                                  {infinity, 0,        infinity, 4,        3,        2       },
+//                                  {infinity, infinity, 0,        3,        infinity, infinity},
+//                                  {infinity, infinity, infinity, 0,        5,        infinity},
+//                                  {infinity, infinity, infinity, infinity, 0,        infinity},
+//                                  {infinity, infinity, infinity, infinity, 1,        0}};
+
+        FloydWarshall floydWarhsall10 = new FloydWarshall(tenVGraph, 10);
+        floydWarhsall10.floydWarshall();
+
+        FloydWarshall floydWarshall50 = new FloydWarshall(fiftyVGraph, 50);
+        floydWarshall50.floydWarshall();
+
+        FloydWarshall floydWarshall100 = new FloydWarshall(oneHundredVGraph, 100);
+        floydWarshall100.floydWarshall();
 
 
         //PRIM'S
         //Demonstrates various size vertice graphs for finding the MST using Prim's algorithim
 
-        int fiveVGraph[][] = new int[][] { { 0, 2, 0, 6, 0 },
-                                           { 2, 0, 3, 8, 5 },
-                                           { 0, 3, 0, 0, 7 },
-                                           { 6, 8, 0, 0, 9 },
-                                           { 0, 5, 7, 9, 0 } };
+        int[][] twentyFiveHundredVGraph = new int[25][25];
+        for(int row = 0; row < 25; row++) {
+            for(int col = 0; col < 25; col++) {
+                if(row != col) {
+                    int rand = (int) (Math.random() * 10) + 1;
+                    if(rand <= 7) {
+                        twentyFiveHundredVGraph[row][col] = rand;
+                    }
+                    else {
+                        twentyFiveHundredVGraph[row][col] = 0;
+                    }
+                }
 
-        PrimsMST fiveVPrims = new PrimsMST(fiveVGraph, 5);
-        fiveVPrims.primMST();
+            }
+        }
+        PrimsMST twentyFiveVPrims = new PrimsMST(twentyFiveHundredVGraph, 25);
+        twentyFiveVPrims.primMST();
 
-        int sixVGraph[][] = new int[][] {  { 0, 5, 0, 6, 0, 0 },
-                                           { 5, 0, 1, 3, 0, 0 },
-                                           { 0, 1, 0, 4, 6, 2 },
-                                           { 6, 3, 4, 0, 2, 0 },
-                                           { 0, 0, 6, 2, 0, 1 },
-                                           { 0, 0, 2, 0, 1, 0 }};
-        PrimsMST sixVPrims = new PrimsMST(sixVGraph, 6);
-        sixVPrims.primMST();
-                                           // a  b  c  d  e  f  g
-        int sevenVGraph[][] = new int[][] { { 0, 2, 0, 0, 0, 1, 0 },
-                                            { 2, 0, 1, 3, 0, 0, 0 },
-                                            { 0, 1, 0, 0, 2, 0, 0},
-                                            { 0, 3, 0, 0, 3, 0, 4 },
-                                            { 0, 0, 2, 3, 0, 0, 0 },
-                                            { 1, 0, 0, 0, 0, 0, 0 },
-                                            { 0, 0, 0, 4, 0, 0, 0}};
+        int[][] seventyFiveVGraph = new int[75][75];
+        for(int row = 0; row < 75; row++) {
+            for(int col = 0; col < 75; col++) {
+                if(row != col) {
+                    int rand = (int) (Math.random() * 10) + 1;
+                    if(rand <= 7) {
+                        seventyFiveVGraph[row][col] = rand;
+                    }
+                    else {
+                        seventyFiveVGraph[row][col] = 0;
+                    }
+                }
+                //System.out.print(seventyFiveVGraph[row][col] + "\t");
 
-        PrimsMST sevenVPrims = new PrimsMST(sevenVGraph, 7);
-        sevenVPrims.primMST();
+            }
+        }
+
+        PrimsMST seventyFiveVPrims = new PrimsMST(seventyFiveVGraph, 75);
+        seventyFiveVPrims.primMST();
+
+        int[][] twoHundredFiftyVGraph = new int[250][250];
+        for(int row = 0; row < 250; row++) {
+            for(int col = 0; col < 250; col++) {
+                if(row != col) {
+                    int rand = (int) (Math.random() * 10) + 1;
+                    if(rand <= 7) {
+                        twoHundredFiftyVGraph[row][col] = rand;
+                    }
+                    else {
+                        twoHundredFiftyVGraph[row][col] = 0;
+                    }
+                }
+                //System.out.print(oneHundredFiftyVPrims[row][col] + "\t");
+
+            }
+        }
+        PrimsMST twoHundredFiftyVPrims = new PrimsMST(twoHundredFiftyVGraph, 75);
+        twoHundredFiftyVPrims.primMST();
+
+
+
+
+
+
+
 
         //KRUSKAL'S
         //Kruskal's for a 4 vertice, 5 edge graph
-        KruskalsMST fourVKruskal = new KruskalsMST(4, 5);
+        KruskalsMST fourVKruskal = new KruskalsMST( 4, 5);
 
         // add edge 0-1
         fourVKruskal.edge[0].source = 0;
@@ -97,7 +192,7 @@ public class AlgorithimTester {
 
 
         //Kruskal's for a 6 vertice, 9 edge graph
-        KruskalsMST sixVKrustal = new KruskalsMST(6,9);
+        KruskalsMST sixVKrustal = new KruskalsMST( 6,9);
         // add edge 0-1
         sixVKrustal.edge[0].source = 0;
         sixVKrustal.edge[0].destination = 1;
@@ -141,7 +236,7 @@ public class AlgorithimTester {
 
 
         //Kruskal's for a 7 vertices, 9 edge graph
-        KruskalsMST sevenVKrustal = new KruskalsMST(7, 9);
+        KruskalsMST sevenVKrustal = new KruskalsMST( 7, 9);
         //add edge 0-2
         sevenVKrustal.edge[0].source = 0;
         sevenVKrustal.edge[0].destination = 2;

@@ -7,13 +7,15 @@ public class KruskalsMST {
     public Edge[] edge, solution;
     public double startTime, endTime;
 
-    public KruskalsMST(int v, int e) {
+    public KruskalsMST( int v, int e) {
         vertices = v;
         edge = new Edge[e];
 
         for (int i = 0; i < e; ++i) {
             edge[i] = new Edge();
         }
+
+
     }
 
     public int find(Subset subsets[], int i) {
